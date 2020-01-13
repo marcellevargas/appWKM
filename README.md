@@ -29,11 +29,11 @@
 
 1- Criar um projeto ionic versão 3:
 ```sh
-ionic start wkm-analytics blank --type=ionic-angular
+ionic start appwkm blank --type=ionic-angular
 ```
 2-Fazer o download do respositório e inserir dentro do app criado
 ```sh
-git clone "NOME REPO"
+git clone https://github.com/marcellevargas/appWKM.git
 ```
 3- Depois de fazer o download do repositório, instalar o plugin de banco de dados:
 ```sh
