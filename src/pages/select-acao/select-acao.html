@@ -1,0 +1,126 @@
+<ion-header>
+    <ion-toolbar color="primary">
+        <ion-title>
+            {{acao.codigo}}
+        </ion-title>
+        <ion-buttons start>
+            <button ion-button (click)="fechar()">
+                <span ion-text>Fechar</span>
+            </button>
+        </ion-buttons>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <!-- Inicio Informações da ação selecionada   -->
+    <ion-card class="informacoesAcao">
+        <ion-item>
+            <h2> {{acao.codigo}}</h2>
+            <p>Valor: {{acao.valor | currency:'BRL':true}}</p>
+        </ion-item>
+    </ion-card>
+    <!-- Fim das Informações da ação selecionada   -->
+
+    <!-- Inicio Minhas ordens -->
+    <ion-card class="ordens">
+        <ion-card-header>
+            <h2> Ordens existentes</h2>
+        </ion-card-header>
+
+        <ion-card-content>
+            <!-- Inicio Cabecalhado da tabela ordens -->
+            <ion-grid>
+                <ion-row>
+                    <ion-col>
+                    </ion-col>
+                    <ion-col>
+                        <p>Quantidade</p>
+                    </ion-col>
+                    <ion-col>
+                        <p>Valor (Unitário)</p>
+                    </ion-col>
+                </ion-row>
+            </ion-grid>
+            <!-- Fim do cabecalho da tabela ordens -->
+
+            <!-- Inicio Tabela de ordens-->
+            <ion-item *ngFor="let ordem of listaOrdem">
+                <ion-grid>
+                    <ion-row [hidden]="ordem.tipo_ordem != 'compra'">
+                        <ion-col>
+                            <h3>Compra</h3>
+                        </ion-col>
+
+                        <ion-col>
+                            <h3>{{ordem.quantidade}}</h3>
+                        </ion-col>
+
+                        <ion-col class="valorAcao">
+                            <h3>{{ordem.valor_acao | currency:'BRL':true}}</h3>
+                        </ion-col>
+                    </ion-row>
+
+                    <ion-row [hidden]="ordem.tipo_ordem != 'venda'">
+                        <ion-col>
+                            <h3>Venda</h3>
+                        </ion-col>
+
+                        <ion-col>
+                            <h3>{{ordem.quantidade}}</h3>
+                        </ion-col>
+
+                        <ion-col class="valorAcao">
+                            <h3>{{ordem.valor_acao | currency:'BRL':true}}</h3>
+                        </ion-col>
+                    </ion-row>
+                </ion-grid>
+            </ion-item>
+            <!-- Fim da Tabela de ordens-->
+        </ion-card-content>
+
+    </ion-card>
+    <!-- Fim de Minhas ordens -->
+
+    <!-- Inicio de Minhas açoes -->
+    <ion-card class="minhasAcoes">
+        <ion-card-header>
+            <h2>Minhas ações</h2>
+        </ion-card-header>
+
+        <ion-card-content>
+
+            <ion-grid>
+                <ion-row>
+                    <ion-col style="text-align: center;">
+                        <p>Minhas ações</p>
+                        <ion-row>
+                            <ion-col>
+                                <h2>{{minhasAcoes.quantidade}}</h2>
+                            </ion-col>
+                        </ion-row>
+                    </ion-col>
+
+                    <ion-col>
+                        <p style="text-align: center;">Maior valor atual(unitário)</p>
+                        <ion-row style="text-align: right;">
+                            <ion-col>
+                                <h2>{{acao.valor | currency:'BRL':true}}</h2>
+                            </ion-col>
+                        </ion-row>
+                    </ion-col>
+                </ion-row>
+            </ion-grid>
+
+            <p>Valor total: {{acao.valor | currency:'BRL':true}} X {{minhasAcoes.quantidade}} =
+                {{valorTotal | currency:'BRL':true}}</p>
+        </ion-card-content>
+
+    </ion-card>
+    <!-- Fim de Minhas açoes -->
+
+    <!-- Início da área dos botões de compra e venda  -->
+    <button ion-button full (click)="abrirComprarPage(acao,minhasAcoes, maiorValorOrdemCompra)">Comprar</button>
+    <button ion-button full
+        (click)="abrirVenderPage(acao,minhasAcoes, menorValorOrdemVenda, quantidadeOrdemVenda)">Vender</button>
+    <!-- Fim da área dos botões de compra e venda  -->
+</ion-content>

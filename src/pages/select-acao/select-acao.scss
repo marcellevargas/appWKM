@@ -1,0 +1,57 @@
+page-select-acao {
+
+    // Início Informações da ação    
+    ion-card.informacoesAcao ion-item{
+        text-align: center;
+    }
+
+    ion-card.informacoesAcao ion-item h2{
+        color: #C34129;
+        font-weight: bold;
+        text-decoration: underline;
+        text-decoration-color: #C34129;
+    }
+
+    ion-card.informacoesAcao{
+        border-radius: 9px;
+        border-left: 3px solid #C34129;
+    }
+    //Fim Informações da ação
+
+    //Início ordens
+    ion-card.ordens ion-item ion-col.valorAcao{
+        text-align: right;
+    }
+
+    ion-card.ordens ion-item ion-grid{
+        border-color: yellow;
+    }
+
+    ion-card.ordens ion-card-header h2{
+        color: #EFB758;
+        font-weight: bold;
+        text-decoration: underline;
+        text-decoration-color: #EFB758;
+    }
+
+    ion-card.ordens{
+        border-radius: 9px;
+        border-left: 3px solid #EFB758;
+    }
+    //Fim ordens
+
+    //Início minhas ações
+    ion-card.minhasAcoes{
+        border-radius: 9px;
+        border-left: 3px solid rgb(55, 99, 61);
+    }
+
+    ion-card.minhasAcoes ion-card-header h2{
+        color: rgb(55, 99, 61);
+        font-weight: bold;
+        text-decoration: underline;
+        text-decoration-color: rgb(55, 99, 61);
+    }
+    //Fim minhas ações
+    
+}

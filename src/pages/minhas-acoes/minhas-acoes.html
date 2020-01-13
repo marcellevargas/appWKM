@@ -1,0 +1,26 @@
+<!--
+  Generated template for the MinhasAcoesPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-title>Minhas ações</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <!-- Inicio Minhas Ações -->
+  <div *ngIf="quantidadeMinhasAcoes > 0">
+    <ion-list *ngFor="let minhaAcao of listaMinhasAcoes">
+      <ion-card class="informacoesAcao">
+        <ion-item>
+            <h2> {{minhaAcao.codigo_acao}}</h2>
+            <p>Quantidade: {{minhaAcao.quantidade }}</p>
+        </ion-item>
+      </ion-card>
+    </ion-list> 
+  </div>   
+  <!-- Fim Inicio Minhas Ações -->
+</ion-content>

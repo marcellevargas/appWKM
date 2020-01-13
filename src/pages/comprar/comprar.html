@@ -1,0 +1,56 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>
+      Comprar
+    </ion-title>
+    <ion-buttons start>
+      <button ion-button (click)="fechar()">
+        <span ion-text>Fechar</span>
+      </button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <!-- Inicio Informações da ação selecionada   -->
+  <ion-card class="informacoesAcao">
+    <ion-item>
+      <h2> {{acao.codigo}}</h2>
+      <p>Valor: {{acao.valor | currency:'BRL':true}}</p>
+      <p>Maior valor de ordem de compra: {{maiorValorOrdemCompra | currency:'BRL':true}} </p>
+    </ion-item>
+  </ion-card>
+  <!-- Fim das Informações da ação selecionada   -->
+
+  <!-- Card para inserir informações de quantidade e valor -->
+  <ion-card class="informacoesQuantidadeValor">
+    <p>O campo quantidade deve conter apenas números</p>
+    <form #form="ngForm" novalidate>
+      <ion-list class="form">
+        <ion-item>
+          <ion-label stacked class="quantidadeValor">Quantidade</ion-label>
+          <ion-input type="number" name="quantidade" pattern="[0-9]*" [(ngModel)]="ordem.quantidade" #quantidade="ngModel"  required>
+          </ion-input>
+        </ion-item>
+
+        <ion-item *ngIf="0 >= ordem.quantidade" class="text-danger">
+          Quantidade inválida.
+        </ion-item>
+
+        <ion-item>
+          <ion-label stacked class="quantidadeValor">Valor</ion-label>
+          <ion-input type="number" name="valor_acao"  [(ngModel)]="ordem.valor_acao" #valor_acao="ngModel" required>
+          </ion-input>
+        </ion-item>
+
+        <ion-item *ngIf="0 >= ordem.valor_acao" class="text-danger">
+          Valor inválido.
+        </ion-item>
+
+      </ion-list>
+      <button ion-button block color="primary" *ngIf="form.form.valid && ordem.valor_acao > 0 && ordem.quantidade > 0"
+        (click)="salvarOrdemCompra()">Comprar</button>
+    </form>
+  </ion-card>
+  <!-- Fim Card para inserir informações de quantidade e valor -->
+</ion-content>

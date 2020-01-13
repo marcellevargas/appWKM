@@ -1,0 +1,34 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-title>
+      Ações disponíveis
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+  <!-- Inicio lista com todas as ações -->
+  <div *ngIf="quantidadeAcoes > 0"> 
+    <ion-list *ngFor="let acao of acoes">
+      <ion-card class="cardAcao" (click)="visualizarAcao(acao)">
+        <ion-grid>
+          <ion-row>
+            <ion-col>
+              <ion-avatar item-start>
+                <ion-icon name="logo-usd"></ion-icon>
+              </ion-avatar>
+            </ion-col>
+            <ion-col>
+              <h2>{{acao.codigo}}</h2>
+            </ion-col>
+            <ion-col>
+              <h2>{{acao.valor | currency:'BRL':true}}</h2>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-card>
+    </ion-list>
+  </div>  
+  <!-- Fim lista com todas as ações -->
+</ion-content>
